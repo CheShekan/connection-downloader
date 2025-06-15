@@ -81,6 +81,8 @@ function loadVersions() {
     versionSelect.innerHTML = "";
     fileSelect.innerHTML = "";
     latestBox.textContent = "📲 این برنامه فقط از App Store قابل دریافت است";
+    document.getElementById("version-wrapper").style.display = "none";
+    document.getElementById("file-wrapper").style.display = "none";
     downloadBtn.textContent = "📲 رفتن به App Store";
     changelogBtn.style.display = "none";
     downloadBtn.onclick = () => window.open(appStoreLinks[app], "_blank");
@@ -91,7 +93,9 @@ function loadVersions() {
   const repo = appData[os][app];
   if (!repo) return;
 
-  fetch(`https://api.github.com/repos/${repo}/releases`)
+  document.getElementById("version-wrapper").style.display = "block";
+    document.getElementById("file-wrapper").style.display = "block";
+    fetch(`https://api.github.com/repos/${repo}/releases`)
     .then(res => res.json())
     .then(releases => {
       currentReleases = releases;
