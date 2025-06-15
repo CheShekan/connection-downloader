@@ -11,6 +11,7 @@ const versionSelect = document.getElementById("version-select");
 const fileSelect = document.getElementById("file-select");
 const downloadBtn = document.getElementById("download-btn");
 const changelogBtn = document.getElementById("changelog-btn");
+const latestBox = document.getElementById("latest-version-box");
 
 let currentReleases = [];
 
@@ -23,6 +24,11 @@ function loadVersions() {
     .then(res => res.json())
     .then(releases => {
       currentReleases = releases;
+
+      if (latestBox && releases.length > 0 && releases[0].tag_name) {
+        latestBox.textContent = `⭐ آخرین نسخه: ${releases[0].tag_name}`;
+      }
+
       versionSelect.innerHTML = "";
       releases.forEach((release, idx) => {
         const opt = document.createElement("option");

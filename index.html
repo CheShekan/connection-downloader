@@ -3,7 +3,7 @@
 <html lang="fa">
 <head>
   <meta charset="UTF-8">
-  <title>دانلود نرم‌افزارها</title>
+  <title>دانلود v2rayNG</title>
   <style>
     body {
       font-family: sans-serif;
@@ -29,27 +29,36 @@
       border: 1px solid #ccc;
     }
     h2 { color: #3b82f6; }
-    .footer { margin-top: 40px; font-size: 0.9rem; color: #777; }
+    .footer { margin-top: 40px; font-size: 0.9rem; color: #777; text-align: center; }
+    #latest-version-box {
+      background-color: #e0f0ff;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
   <div class="card">
-    <h2>دانلود v2rayNG</h2>
+    <h2>⬇️ دانلود v2rayNG</h2>
 
-    <label>سیستم‌عامل:</label>
+    <div id="latest-version-box">در حال بارگذاری آخرین نسخه...</div>
+
+    <label>📱 سیستم‌عامل:</label>
     <select id="os-select">
       <option value="android">اندروید</option>
     </select>
 
-    <label>برنامه:</label>
+    <label>🧩 برنامه:</label>
     <select id="app-select">
       <option value="v2rayNG">v2rayNG</option>
     </select>
 
-    <label>نسخه:</label>
+    <label>🏷️ نسخه:</label>
     <select id="version-select"></select>
 
-    <label>فایل برای دانلود:</label>
+    <label>📁 فایل برای دانلود:</label>
     <select id="file-select"></select>
 
     <button id="download-btn">⬇️ دانلود نسخه انتخاب شده</button>
