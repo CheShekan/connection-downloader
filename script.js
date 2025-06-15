@@ -17,7 +17,14 @@ const appData = {
     v2raytun: null,
     openvpn: null,
     wireguard: null
-}
+  }
+};
+
+const appStoreLinks = {
+  streisand: "https://apps.apple.com/us/app/streisand/id6450534064",
+  v2raytun: "https://apps.apple.com/us/app/v2raytun/id6476628951",
+  openvpn: "https://apps.apple.com/us/app/openvpn-connect-openvpn-app/id590379981",
+  wireguard: "https://apps.apple.com/us/app/wireguard/id1441195209"
 };
 
 const osSelect = document.getElementById("os-select");
@@ -37,21 +44,21 @@ function updateAppList() {
   if (!appData[os]) return;
 
   Object.keys(appData[os]).forEach(app => {
-    if (appData[os][app] === null) return;
     const opt = document.createElement("option");
     opt.value = app;
     opt.textContent =
       app === "v2rayNG" ? "v2rayNG" :
       app === "nekoray" ? "Persian Nekoray" :
-      app === "hiddify" ? "Hiddify" :
-      app === "v2rayn" ? "v2rayN" :
       app === "nekobox" ? "NekoBox" :
       app === "wgtunnel" ? "WG Tunnel" :
       app === "strongswan" ? "StrongSwan" :
+      app === "hiddify" ? "Hiddify" :
+      app === "v2rayn" ? "v2rayN" :
       app === "streisand" ? "Streisand (App Store)" :
       app === "v2raytun" ? "v2RayTun (App Store)" :
       app === "openvpn" ? "OpenVPN (App Store)" :
-      app === "wireguard" ? "WireGuard (App Store)" : app;
+      app === "wireguard" ? "WireGuard (App Store)" :
+      app;
     appSelect.appendChild(opt);
   });
 
@@ -62,19 +69,39 @@ function loadVersions() {
   const os = osSelect.value;
   const app = appSelect.value;
 
-  if (!appData[os] || !appData[os][app]) {
+  if (!appData[os] || !(app in appData[os])) {
     versionSelect.innerHTML = "";
     fileSelect.innerHTML = "";
     latestBox.textContent = "برنامه‌ای برای این سیستم‌عامل وجود ندارد";
     return;
   }
 
+  // iOS App Store links
+  if (os === "ios" && appStoreLinks[app]) {
+    versionSelect.innerHTML = "";
+    fileSelect.innerHTML = "";
+    latestBox.textContent = "📲 این برنامه فقط از App Store قابل دریافت است";
+    downloadBtn.textContent = "📲 رفتن به App Store";
+    changelogBtn.style.display = "none";
+    downloadBtn.onclick = () => window.open(appStoreLinks[app], "_blank");
+    return;
+  }
+
+  // Regular GitHub Repo Load
   const repo = appData[os][app];
+  if (!repo) return;
 
   fetch(`https://api.github.com/repos/${repo}/releases`)
     .then(res => res.json())
     .then(releases => {
       currentReleases = releases;
+
+      changelogBtn.style.display = "inline-block";
+      downloadBtn.textContent = "⬇️ دانلود نسخه انتخاب شده";
+      downloadBtn.onclick = () => {
+        const url = fileSelect.value;
+        if (url) window.open(url, "_blank");
+      };
 
       if (latestBox && releases.length > 0 && releases[0].tag_name) {
         latestBox.textContent = `⭐ آخرین نسخه: ${releases[0].tag_name}`;
@@ -106,11 +133,6 @@ osSelect.addEventListener("change", updateAppList);
 appSelect.addEventListener("change", loadVersions);
 versionSelect.addEventListener("change", () => {
   loadAssets(versionSelect.value);
-});
-
-downloadBtn.addEventListener("click", () => {
-  const url = fileSelect.value;
-  if (url) window.open(url, "_blank");
 });
 
 changelogBtn.addEventListener("click", () => {
