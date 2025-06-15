@@ -18,6 +18,27 @@ const latestBox = document.getElementById("latest-version-box");
 
 let currentReleases = [];
 
+// بروزرسانی لیست برنامه‌ها بر اساس سیستم‌عامل
+function updateAppList() {
+  const os = osSelect.value;
+  appSelect.innerHTML = "";
+
+  if (!appData[os]) {
+    return;
+  }
+
+  Object.keys(appData[os]).forEach(app => {
+    const opt = document.createElement("option");
+    opt.value = app;
+    opt.textContent = app === "v2rayNG" ? "v2rayNG" : 
+                      app === "nekoray" ? "Persian Nekoray" : app;
+    appSelect.appendChild(opt);
+  });
+
+  loadVersions(); // فراخوانی مجدد پس از تغییر اپ
+}
+
+// دریافت نسخه‌ها و فایل‌های برنامه از GitHub API
 function loadVersions() {
   const os = osSelect.value;
   const app = appSelect.value;
@@ -51,6 +72,7 @@ function loadVersions() {
     });
 }
 
+// لود فایل‌های قابل دانلود برای نسخه انتخابی
 function loadAssets(index) {
   const release = currentReleases[index];
   fileSelect.innerHTML = "";
@@ -62,7 +84,10 @@ function loadAssets(index) {
   });
 }
 
-osSelect.addEventListener("change", loadVersions);
+// لیسنرها
+osSelect.addEventListener("change", () => {
+  updateAppList();
+});
 appSelect.addEventListener("change", loadVersions);
 versionSelect.addEventListener("change", () => {
   loadAssets(versionSelect.value);
@@ -78,4 +103,5 @@ changelogBtn.addEventListener("click", () => {
   if (release.html_url) window.open(release.html_url, "_blank");
 });
 
-loadVersions();
+// بارگذاری اولیه
+updateAppList();
