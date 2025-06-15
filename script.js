@@ -79,13 +79,13 @@ function loadVersions() {
     versionSelect.innerHTML = "";
     fileSelect.innerHTML = "";
     latestBox.innerHTML = `
-  <img src="assets/icons/appstore-icon01.png" alt="App Store" style="width: 25px; height: 25px; vertical-align: middle; margin-left: 0px;">
+  <img src="asset/icons/appstore-icon01.png" alt="App Store" style="width: 25px; height: 25px; vertical-align: middle; margin-left: 0px;">
   این برنامه فقط از App Store قابل دریافت است
 `;
     document.getElementById("version-wrapper").style.display = "none";
     document.getElementById("file-wrapper").style.display = "none";
     downloadBtn.innerHTML = `
-  <img src="assets/icons/appstore-icon02.png" alt="App Store" style="width: 25px; height: 25px; vertical-align: middle; margin-left: 0px;">
+  <img src="asset/icons/appstore-icon02.png" alt="App Store" style="width: 25px; height: 25px; vertical-align: middle; margin-left: 0px;">
   رفتن به App Store
 `;
   }
@@ -102,7 +102,7 @@ function loadVersions() {
       currentReleases = releases;
 
       downloadBtn.innerHTML = `
-  <img src="assets/icons/appstore-icon02.png" alt="دانلود" style="width: 25px; height: 25px; vertical-align: middle; margin-left: 0px;">
+  <img src="asset/icons/appstore-icon02.png" alt="دانلود" style="width: 25px; height: 25px; vertical-align: middle; margin-left: 0px;">
   دانلود نسخه انتخاب شده
 `;
       downloadBtn.onclick = () => {
@@ -111,7 +111,7 @@ function loadVersions() {
       };
 
       if (latestBox && releases.length > 0 && releases[0].tag_name) {
-        latestBox.innerHTML = `<img src="assets/icons/star-custom.png" alt="نسخه" style="width: 25px; height: 25px; vertical-align: middle; margin-left: 6px;"> آخرین نسخه: ${releases[0].tag_name}`;
+        latestBox.innerHTML = `<img src="asset/icons/star-custom.png" alt="نسخه" style="width: 25px; height: 25px; vertical-align: middle; margin-left: 6px;"> آخرین نسخه: ${releases[0].tag_name}`;
       }
 
       versionSelect.innerHTML = "";
