@@ -4,10 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <title>دانلود ابزارهای عبور از فیلترینگ</title>
-  
+  <link href="https://cdn.fontcdn.ir/Font/Persian/IRANSans/IRANSans.css" rel="stylesheet" />
   <style>
     body, select, input, button, option {
-      font-family: Tahoma, sans-serif;
+      font-family: 'IRANSans', sans-serif;
     }
     body {
       direction: rtl;
@@ -65,58 +65,7 @@
       font-weight: bold;
       color: #1d4ed8;
     }
-  
-    label {
-      display: inline-block;
-      width: 100px;
-      text-align: right;
-      font-weight: bold;
-      margin-left: 10px;
-    }
-    .field {
-      display: flex;
-      align-items: center;
-      justify-content: right;
-      margin-top: 10px;
-    }
-    select {
-      flex: 1;
-    }
-    
-    @media (max-width: 600px) {
-      .card {
-        padding: 15px;
-      }
-      .field {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      label {
-        width: 100%;
-        margin-left: 0;
-        margin-bottom: 5px;
-        text-align: right;
-      }
-      select {
-        width: 100%;
-      }
-      button {
-        width: 100%;
-      }
-    }
-    
-@font-face {
-  font-family: 'IRANSans';
-  src: url('fonts/IRANSans.ttf') format('truetype');
-}
-
-@media (max-width: 600px) {
-  @font-face {
-    font-family: 'IRANSans';
-    src: url('fonts/IRANSansMobile.ttf') format('truetype');
-  }
-}
-</style>
+  </style>
 </head>
 <body>
   <div class="card">
@@ -124,21 +73,25 @@
 
     <div id="latest-version-box">⭐ آخرین نسخه: در حال بارگذاری...</div>
 
-    <div class="field"><label>📱 سیستم‌عامل:</label><select id="os-select">
+    <label>📱 سیستم‌عامل:</label>
+    <select id="os-select">
       <option value="mac">مک</option>
       <option value="ios">آیفون</option>
       <option value="android">اندروید</option>
       <option value="windows">ویندوز</option>
-    </select></div>
+    </select>
 
-    <div class="field"><label>🧩 برنامه:</label><select id="app-select">
+    <label>🧩 برنامه:</label>
+    <select id="app-select">
       <option value="v2rayNG">v2rayNG</option>
       <option value="nekoray">Persian Nekoray</option>
-    </select></div>
+    </select>
 
-    <div id="version-wrapper"><div class="field"><label>🏷️ نسخه:</label><select id="version-select"></select></div></div>
+    <label>🏷️ نسخه:</label>
+    <select id="version-select"></select>
 
-    <div id="file-wrapper"><div class="field"><label>📁 فایل برای دانلود:</label><select id="file-select"></select></div></div>
+    <label>📁 فایل برای دانلود:</label>
+    <select id="file-select"></select>
 
     <button id="download-btn">⬇️ دانلود نسخه انتخاب شده</button>
     <button id="changelog-btn">📄 مشاهده تغییرات</button>
