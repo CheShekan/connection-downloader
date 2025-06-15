@@ -1,3 +1,10 @@
+const iosApps = {
+    "Streisand (App Store)": "https://apps.apple.com/us/app/streisand/id6450534064",
+    "v2RayTun (App Store)": "https://apps.apple.com/us/app/v2raytun/id6476628951",
+    "OpenVPN (App Store)": "https://apps.apple.com/us/app/openvpn-connect-openvpn-app/id590379981",
+    "WireGuard (App Store)": "https://apps.apple.com/us/app/wireguard/id1441195209"
+};
+
 
 const appData = {
   android: {
