@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>دانلود نرم‌افزارها</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      direction: rtl;
+      background: #f6f7fb;
+      padding: 40px;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+      text-align: center;
+    }
+    select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    h2 { color: #3b82f6; }
+    .footer { margin-top: 40px; font-size: 0.9rem; color: #777; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>دانلود v2rayNG</h2>
+
+    <label>سیستم‌عامل:</label>
+    <select id="os-select">
+      <option value="android">اندروید</option>
+    </select>
+
+    <label>برنامه:</label>
+    <select id="app-select">
+      <option value="v2rayNG">v2rayNG</option>
+    </select>
+
+    <label>نسخه:</label>
+    <select id="version-select"></select>
+
+    <label>فایل برای دانلود:</label>
+    <select id="file-select"></select>
+
+    <button id="download-btn">⬇️ دانلود نسخه انتخاب شده</button>
+    <button id="changelog-btn">📄 مشاهده تغییرات</button>
+  </div>
+
+  <div class="footer">
+    طراحی شده توسط شما | نسخه پایه برای گسترش آینده
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
