@@ -2,6 +2,9 @@
 const appData = {
   android: {
     v2rayNG: "2dust/v2rayNG"
+  },
+  windows: {
+    nekoray: "Mahdi-zarei/nekoray"
   }
 };
 
@@ -18,6 +21,14 @@ let currentReleases = [];
 function loadVersions() {
   const os = osSelect.value;
   const app = appSelect.value;
+
+  if (!appData[os] || !appData[os][app]) {
+    versionSelect.innerHTML = "";
+    fileSelect.innerHTML = "";
+    latestBox.textContent = "برنامه‌ای برای این سیستم‌عامل وجود ندارد";
+    return;
+  }
+
   const repo = appData[os][app];
 
   fetch(`https://api.github.com/repos/${repo}/releases`)
