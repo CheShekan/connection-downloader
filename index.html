@@ -4,10 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <title>دانلود ابزارهای عبور از فیلترینگ</title>
-  
   <style>
+    @font-face {
+      font-family: 'IRANSans';
+      src: url('fonts/IRANSans.woff2?v=1') format('woff2');
+    }
+    @media (max-width: 600px) {
+      @font-face {
+        font-family: 'IRANSans';
+        src: url('fonts/IRANSansMobile.woff2?v=1') format('woff2');
+      }
+    }
     body, select, input, button, option {
-      font-family: Tahoma, sans-serif;
+      font-family: 'IRANSans', Tahoma, sans-serif;
     }
     body {
       direction: rtl;
@@ -47,110 +56,32 @@
       font-size: 0.95rem;
       color: #444;
     }
-    .footer a {
-      margin: 10px;
-      display: inline-block;
-      padding: 10px 20px;
-      border-radius: 10px;
-      background: #e0e7ff;
-      color: #1d4ed8;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    #latest-version-box {
-      background-color: #e0f0ff;
-      padding: 10px;
-      border-radius: 8px;
-      margin-bottom: 15px;
-      font-weight: bold;
-      color: #1d4ed8;
-    }
-  
-    label {
-      display: inline-block;
-      width: 100px;
-      text-align: right;
-      font-weight: bold;
-      margin-left: 10px;
-    }
-    .field {
-      display: flex;
-      align-items: center;
-      justify-content: right;
-      margin-top: 10px;
-    }
-    select {
-      flex: 1;
-    }
-    
-    @media (max-width: 600px) {
-      .card {
-        padding: 15px;
-      }
-      .field {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      label {
-        width: 100%;
-        margin-left: 0;
-        margin-bottom: 5px;
-        text-align: right;
-      }
-      select {
-        width: 100%;
-      }
-      button {
-        width: 100%;
-      }
-    }
-    
-@font-face {
-  font-family: 'IRANSans';
-  src: url('fonts/IRANSans.ttf') format('truetype');
-}
-
-@media (max-width: 600px) {
-  @font-face {
-    font-family: 'IRANSans';
-    src: url('fonts/IRANSansMobile.ttf') format('truetype');
-  }
-}
-</style>
+  </style>
 </head>
 <body>
   <div class="card">
-    <h2>⬇️ دانلود نرم‌افزارها</h2>
-
-    <div id="latest-version-box">⭐ آخرین نسخه: در حال بارگذاری...</div>
-
-    <div class="field"><label>📱 سیستم‌عامل:</label><select id="os-select">
-      <option value="mac">مک</option>
-      <option value="ios">آیفون</option>
-      <option value="android">اندروید</option>
-      <option value="windows">ویندوز</option>
-    </select></div>
-
-    <div class="field"><label>🧩 برنامه:</label><select id="app-select">
-      <option value="v2rayNG">v2rayNG</option>
-      <option value="nekoray">Persian Nekoray</option>
-    </select></div>
-
-    <div id="version-wrapper"><div class="field"><label>🏷️ نسخه:</label><select id="version-select"></select></div></div>
-
-    <div id="file-wrapper"><div class="field"><label>📁 فایل برای دانلود:</label><select id="file-select"></select></div></div>
-
-    <button id="download-btn">⬇️ دانلود نسخه انتخاب شده</button>
-    <button id="changelog-btn">📄 مشاهده تغییرات</button>
+    <h2>دانلود نرم‌افزارها ⬇️</h2>
+    <p style="background:#dbeafe;padding:8px;border-radius:8px;color:#1e40af;">
+      برنامه‌ای برای این سیستم‌عامل وجود ندارد
+    </p>
+    <label>سیستم‌عامل:</label>
+    <select><option>مک</option></select>
+    <label>برنامه:</label>
+    <select></select>
+    <label>نسخه:</label>
+    <select></select>
+    <label>فایل برای دانلود:</label>
+    <select></select>
+    <button>⬇️ دانلود نسخه انتخاب شده</button>
+    <button>📄 مشاهده تغییرات</button>
   </div>
-
   <div class="footer">
-    <p><strong>نوشته شده توسط شما</strong></p>
-    <a href="#">📣 تلگرام</a>
-    <a href="#">📺 یوتیوب</a>
-    <a href="#">📸 اینستاگرام</a>
+    نوشته شده توسط شما
+    <div style="margin-top:10px;">
+      <button>اینستاگرام 📷</button>
+      <button>یوتیوب 🚉</button>
+      <button>تلگرام 📣</button>
+    </div>
   </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
