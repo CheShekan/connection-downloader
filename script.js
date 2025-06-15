@@ -1,11 +1,23 @@
 
 const appData = {
   android: {
-    v2rayNG: "2dust/v2rayNG"
+    v2rayNG: "2dust/v2rayNG",
+    nekobox: "MatsuriDayo/NekoBoxForAndroid",
+    wgtunnel: "wgtunnel/wgtunnel",
+    strongswan: "strongswan/strongswan"
   },
   windows: {
-    nekoray: "Mahdi-zarei/nekoray"
-  }
+    nekoray: "Mahdi-zarei/nekoray",
+    hiddify: "hiddify/hiddify-app",
+    v2rayn: "2dust/v2rayN"
+  },
+  mac: {},
+  ios: {
+    streisand: null,
+    v2raytun: null,
+    openvpn: null,
+    wireguard: null
+}
 };
 
 const osSelect = document.getElementById("os-select");
@@ -18,27 +30,34 @@ const latestBox = document.getElementById("latest-version-box");
 
 let currentReleases = [];
 
-// بروزرسانی لیست برنامه‌ها بر اساس سیستم‌عامل
 function updateAppList() {
   const os = osSelect.value;
   appSelect.innerHTML = "";
 
-  if (!appData[os]) {
-    return;
-  }
+  if (!appData[os]) return;
 
   Object.keys(appData[os]).forEach(app => {
+    if (appData[os][app] === null) return;
     const opt = document.createElement("option");
     opt.value = app;
-    opt.textContent = app === "v2rayNG" ? "v2rayNG" : 
-                      app === "nekoray" ? "Persian Nekoray" : app;
+    opt.textContent =
+      app === "v2rayNG" ? "v2rayNG" :
+      app === "nekoray" ? "Persian Nekoray" :
+      app === "hiddify" ? "Hiddify" :
+      app === "v2rayn" ? "v2rayN" :
+      app === "nekobox" ? "NekoBox" :
+      app === "wgtunnel" ? "WG Tunnel" :
+      app === "strongswan" ? "StrongSwan" :
+      app === "streisand" ? "Streisand (App Store)" :
+      app === "v2raytun" ? "v2RayTun (App Store)" :
+      app === "openvpn" ? "OpenVPN (App Store)" :
+      app === "wireguard" ? "WireGuard (App Store)" : app;
     appSelect.appendChild(opt);
   });
 
-  loadVersions(); // فراخوانی مجدد پس از تغییر اپ
+  loadVersions();
 }
 
-// دریافت نسخه‌ها و فایل‌های برنامه از GitHub API
 function loadVersions() {
   const os = osSelect.value;
   const app = appSelect.value;
@@ -72,7 +91,6 @@ function loadVersions() {
     });
 }
 
-// لود فایل‌های قابل دانلود برای نسخه انتخابی
 function loadAssets(index) {
   const release = currentReleases[index];
   fileSelect.innerHTML = "";
@@ -84,10 +102,7 @@ function loadAssets(index) {
   });
 }
 
-// لیسنرها
-osSelect.addEventListener("change", () => {
-  updateAppList();
-});
+osSelect.addEventListener("change", updateAppList);
 appSelect.addEventListener("change", loadVersions);
 versionSelect.addEventListener("change", () => {
   loadAssets(versionSelect.value);
@@ -103,5 +118,4 @@ changelogBtn.addEventListener("click", () => {
   if (release.html_url) window.open(release.html_url, "_blank");
 });
 
-// بارگذاری اولیه
 updateAppList();
